@@ -1,0 +1,75 @@
+
+import java.util.Scanner;
+
+interface Ride {
+    double calculateFare(double distance);
+    String getRideType();
+}
+
+class Mini implements Ride {
+    private static final double RATE_PER_KM = 10.0;
+
+    public double calculateFare(double distance) {
+        return RATE_PER_KM * distance;
+    }
+
+    public String getRideType() {
+        return "Mini";
+    }
+}
+
+class Prime implements Ride {
+    private static final double RATE_PER_KM = 15.0;
+
+    public double calculateFare(double distance) {
+        return RATE_PER_KM * distance;
+    }
+
+    public String getRideType() {
+        return "Prime";
+    }
+}
+
+class SUV implements Ride {
+    private static final double RATE_PER_KM = 20.0;
+
+    public double calculateFare(double distance) {
+        return RATE_PER_KM * distance;
+    }
+
+    public String getRideType() {
+        return "SUV";
+    }
+}
+
+public class RideApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter ride type (Mini, Prime, SUV):");
+        String type = scanner.nextLine().trim();
+
+        System.out.println("Enter distance in km:");
+        double distance = scanner.nextDouble();
+
+        Ride ride;
+
+        switch (type.toLowerCase()) {
+            case "mini":
+                ride = new Mini();
+                break;
+            case "prime":
+                ride = new Prime();
+                break;
+            case "suv":
+                ride = new SUV();
+                break;
+            default:
+                System.out.println("Invalid ride type selected.");
+                return;
+        }
+
+        System.out.println("Ride Type: " + ride.getRideType());
+        System.out.println("Fare for " + distance + " km: ₹" + ride.calculateFare(distance));
+    }
+}

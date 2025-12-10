@@ -1,0 +1,96 @@
+
+interface SmartDevice {
+    void turnOn();
+    void turnOff();
+}
+class Light implements SmartDevice {
+
+    @Override
+    public void turnOn() {
+        System.out.println("Light is ON");
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("Light is OFF");
+    }
+}
+class Fan implements SmartDevice {
+
+    @Override
+    public void turnOn() {
+        System.out.println("Fan is ON");
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("Fan is OFF");
+    }
+}
+class AC implements SmartDevice {
+
+    @Override
+    public void turnOn() {
+        System.out.println("AC is ON");
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("AC is OFF");
+    }
+}
+class DoorLock implements SmartDevice {
+
+    @Override
+    public void turnOn() {
+        System.out.println("Door is LOCKED");
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("Door is UNLOCKED");
+    }
+}
+public class SmartHomeController {
+
+    public void operateDevice(SmartDevice device) {
+        System.out.println("Turning device ON...");
+        device.turnOn();
+
+        System.out.println("Turning device OFF...");
+        device.turnOff();
+
+        System.out.println("---------------------------");
+    }
+
+    public static void main(String[] args) {
+
+        SmartHomeController controller = new SmartHomeController();
+
+        SmartDevice light = new Light();
+        SmartDevice fan = new Fan();
+        SmartDevice ac = new AC();
+        SmartDevice door = new DoorLock();
+
+        controller.operateDevice(light);
+        controller.operateDevice(fan);
+        controller.operateDevice(ac);
+        controller.operateDevice(door);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
